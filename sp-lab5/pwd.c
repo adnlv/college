@@ -7,6 +7,7 @@
 #include <errno.h>
 
 #define VERSION 0x010000
+#define AUTHOR "Artem Danylov"
 
 static void print_help(void)
 {
@@ -16,10 +17,11 @@ static void print_help(void)
            "\tpwd [OPTION]\n"
            "\nDESCRIPTION\n"
            "\tPrint the full filename of the current working directory.\n"
-           "\n\t-L, --logical     use PWD from environment, even if it contains symlinks\n"
-           "\n\t-P, --physical    resolve all symlinks\n"
-           "\n\t-h, --help        display this help and exit\n"
-           "\n\t-v, --version     output version information and exit\n"
+           "\n\t-L, --logical   use PWD from environment, even if it contains symlinks\n"
+           "\n\t-P, --physical  resolve all symlinks\n"
+           "\n\t--help          display this help and exit\n"
+           "\n\t--version       output version information and exit\n"
+           "\n\t--author        print author name and exit\n"
            "\n\tIf no option is specified, -P is assumed.\n"
            "\nAUTHOR\n"
            "\tWritten by Artem Danylov\n"
@@ -32,6 +34,11 @@ static void print_version(void)
            (VERSION & 0xFF0000) >> 16,
            (VERSION & 0x00FF00) >> 8,
            (VERSION & 0x0000FF));
+}
+
+static void print_author(void)
+{
+    printf("%s\n", AUTHOR);
 }
 
 static int print_physical(void)
@@ -72,13 +79,17 @@ int main(int argc, char const *argv[])
         return print_physical();
     }
 
-    if (strcmp(argv[1], "-h") == 0 || strcmp(argv[1], "--help") == 0)
+    if (strcmp(argv[1], "--help") == 0)
     {
         print_help();
     }
-    else if (strcmp(argv[1], "-v") == 0 || strcmp(argv[1], "--version") == 0)
+    else if (strcmp(argv[1], "--version") == 0)
     {
         print_version();
+    }
+    else if (strcmp(argv[1], "--author") == 0)
+    {
+        print_author();
     }
     else if (strcmp(argv[1], "-L") == 0 || strcmp(argv[1], "--logical") == 0)
     {
