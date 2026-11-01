@@ -8,7 +8,7 @@
 
 ## Результат виконання
 
-```
+```text
 Matching password: kernel04
 Found on attempt: 1705
 Elapsed time: 0.001431 (sec)

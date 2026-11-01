@@ -7,7 +7,7 @@
 
 ## Результат виконання
 
-```
+```text
 Initial message: user=frank&operation=pay&amount=340&ref=06
 Changed message: user=frank&operation=pay&amount=840&ref=06
 Initial hash: d309c9f85eec91a3a35c0b3bb4c78fe798be490a6b804410e2728047006771dc
